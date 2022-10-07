@@ -22,6 +22,7 @@ Post:
   title: string
   subtitle: string
   image: image
+  content: markdown
   tags: Tag.posts
 
 Author:
