@@ -1,5 +1,5 @@
 name:  blog
-cname: db.blogs.sh
+host: db.blogs.sh
 
 Blog:
   _id: name
