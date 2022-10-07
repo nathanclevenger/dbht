@@ -9,6 +9,6 @@ export class DB {
     this.env = env
   }
   async fetch(req) {
-    return new Response('Hello, world!')
+    return new Response(JSON.stringify({hello: 'world'}))
   }
 }
