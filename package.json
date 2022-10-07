@@ -1,5 +1,5 @@
 {
   "scripts": {
-    "dev": "miniflare worker.js --watch --debug -m"
+    "dev": "miniflare worker.js --watch --debug -m --do DB=DB --do-persist"
   }
 }
