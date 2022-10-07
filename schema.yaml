@@ -1,3 +1,6 @@
+name:  blog
+cname: blogs.sh
+
 Blog:
   _id: name
   name: string
