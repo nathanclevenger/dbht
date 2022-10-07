@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "dev": "miniflare worker.js --watch --debug -m"
+  }
+}
