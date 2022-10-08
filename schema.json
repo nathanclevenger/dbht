@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Defaults": {
+      "enum": [
+        "createdBy",
+        "createdAt",
+        "updatedBy",
+        "updatedAt"
+      ],
+      "type": "string"
+    },
+    "Model": {
+      "additionalProperties": {
+        "$ref": "#/definitions/Primitive"
+      },
+      "type": "object"
+    },
+    "Models": {
+      "enum": [
+        "Blog",
+        "Author",
+        "Tag"
+      ],
+      "type": "string"
+    },
+    "NamedParameters<typeof db>": {
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "$ref": "#/definitions/Schema"
+        }
+      },
+      "required": [
+        "schema"
+      ],
+      "type": "object"
+    },
+    "Primitive": {
+      "enum": [
+        "bool",
+        "string",
+        "number",
+        "Date",
+        "createdBy"
+      ],
+      "type": "string"
+    },
+    "Schema": {
+      "additionalProperties": {
+        "$ref": "#/definitions/Model"
+      },
+      "type": "object"
+    }
+  }
+}
