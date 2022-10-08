@@ -1,5 +1,11 @@
 {
   "scripts": {
-    "dev": "miniflare worker.js --watch --debug -m --do DB=DB --do-persist --open"
+    "dev": "miniflare worker.js --watch --debug -m --do DB=DB --do-persist --open",
+    "build": "tsc",
+    "generate-schema": "ts-json-schema-generator --path 'index.ts' --type '*' --out 'schema.json'"
+  },
+  "devDependencies": {
+    "ts-json-schema-generator": "^1.1.2",
+    "typescript": "^4.8.4"
   }
 }
