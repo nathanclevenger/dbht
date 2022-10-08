@@ -7,7 +7,8 @@ export type Model = {
   [key: string]: Primitive 
 }
 
-export type Primitive = 'bool' | 'string' | 'number' | 'Date' | 'createdBy'
+export type Calculated = 'slugify' | 'uuid' | 'now' | 'camelCase' | 'titleCase' | 'humanCase'
+export type Primitive = 'bool' | 'string' | 'number' | 'date' | 'time' | 'datetime' 
 export type Defaults = 'createdBy' | 'createdAt' | 'updatedBy' | 'updatedAt'
 
 export type Query<T> = {
