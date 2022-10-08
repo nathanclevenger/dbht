@@ -40,3 +40,21 @@ export const db = (schema: Schema) => {
 //     gf: 'gdfgdfg'
 //   }
 // }
+
+
+
+// function pluck<DataType, KeyType extends keyof DataType>(
+//   items: DataType[],
+//   key: KeyType
+// ): DataType[KeyType][] {
+//   return items.map(item => item[key])
+// }
+
+// const dogs = [
+//   { name: 'Mimi', age: 12 },
+//   { name: 'LG', age: 14 }
+// ]
+
+// pluck(dogs, 'name')
+
+// const plucks = () => {}
