@@ -1,4 +1,6 @@
 export type Schema = {
+  name: string
+  host: string
   [key: string]: Model
 }
 

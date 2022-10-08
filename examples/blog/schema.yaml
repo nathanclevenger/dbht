@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nathanclevenger/dbht/main/schema.json?token=GHSAT0AAAAAABWQC5H2ZA62K7HGFSYBKBU6Y2BPMKA
+
 name: blog
 host: db.blogs.sh
 
