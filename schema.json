@@ -63,6 +63,14 @@
         "$ref": "#/definitions/Model"
       },
       "type": "object"
+    },
+    "Visibility": {
+      "enum": [
+        "public",
+        "unlisted",
+        "private"
+      ],
+      "type": "string"
     }
   }
 }
