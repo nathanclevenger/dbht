@@ -1,6 +1,17 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": {
+    "Calculated": {
+      "enum": [
+        "slugify",
+        "uuid",
+        "now",
+        "camelCase",
+        "titleCase",
+        "humanCase"
+      ],
+      "type": "string"
+    },
     "Defaults": {
       "enum": [
         "createdBy",
@@ -41,8 +52,9 @@
         "bool",
         "string",
         "number",
-        "Date",
-        "createdBy"
+        "date",
+        "time",
+        "datetime"
       ],
       "type": "string"
     },
