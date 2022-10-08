@@ -38,3 +38,13 @@ Tag:
   posts: Post.tags
 
 ```
+
+
+```javascript
+import { db } from 'dbht'
+
+db.blogs.all()
+db.blogs.find({title: 'Hello'})
+db.blogs.create({ title: 'This is a Test', author: 'John Smith' })
+```
+
