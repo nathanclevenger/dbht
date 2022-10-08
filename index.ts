@@ -58,3 +58,12 @@ export const db = (schema: Schema) => {
 // pluck(dogs, 'name')
 
 // const plucks = () => {}
+
+// const pluck = <DataType, KeyType extends keyof DataType>(items: DataType[], key: KeyType): DataType[KeyType][] => items.map(item => item[key])
+
+// const dogs = [
+//   { name: 'Mimi', age: 12 },
+//   { name: 'LG', age: 14 }
+// ]
+
+// pluck(dogs, 'name')
