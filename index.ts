@@ -1,7 +1,5 @@
 export type Schema<T> = {
-  // name: string
-  // host: string
-  [key: keyof T]: Model
+  [key in keyof T]: Model
 }
 
 export type Model = {
@@ -21,7 +19,7 @@ export type Query<T> = {
 export type Models = 'Blog' | 'Author' | 'Tag'
 
 
-export const db = (schema: Schema<T>) => {
+export const db = (schema: Schema<Models>) => {
   list: query => ({query})
 }
 
