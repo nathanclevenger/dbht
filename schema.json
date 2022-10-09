@@ -39,7 +39,7 @@
       "additionalProperties": false,
       "properties": {
         "schema": {
-          "$ref": "#/definitions/Schema"
+          "$ref": "#/definitions/Schema%3CModels%3E"
         }
       },
       "required": [
@@ -58,10 +58,8 @@
       ],
       "type": "string"
     },
-    "Schema": {
-      "additionalProperties": {
-        "$ref": "#/definitions/Model"
-      },
+    "Schema<Models>": {
+      "additionalProperties": false,
       "type": "object"
     },
     "Visibility": {
