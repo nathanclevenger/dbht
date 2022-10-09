@@ -1,3 +1,8 @@
+import { createDB } from 'blinkdb'
+
+const db = createDB()
+const userTable = createTable(db, 'users')()
+
 export default {
   // fetch: req => new Response(JSON.stringify(req.cf.botManagement))
   fetch: (req, env) => env.DB.get(env.DB.idFromName(new URL(req.url).hostname)).fetch(req)
@@ -33,6 +38,13 @@ export class DB {
     //   console.log({rowCount, done, queue})
     // }
 
-    return new Response(JSON.stringify({hello: 'world'}))
+    const aliceId = await insert(userTable, { id: uuid(), name: "Alice", age: 23 });
+    const bobId = await insert(userTable, { id: uuid(), name: "Bob", age: 45 });
+    const charlieId = await insert(userTable, { id: uuid(), name: "Charlie", age: 34 });
+
+
+    const allUsers = await many(userTable)
+
+    return new Response(JSON.stringify({hello: 'world', allUsers}))
   }
 }

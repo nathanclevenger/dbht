@@ -1,12 +1,16 @@
 {
   "scripts": {
-    "dev": "miniflare worker.js --watch --debug -m --do DB=DB --do-persist --open",
-    "build": "tsc",
+    "dev": "miniflare ./dist/index.js --watch --debug -m --do DB=DB --do-persist --open",
+    "build": "esbuild --bundle --sourcemap --outdir=dist ./index.js",
     "generate-schema": "ts-json-schema-generator --path 'index.ts' --type '*' --out 'schema.json'"
   },
   "devDependencies": {
+    "esbuild": "^0.15.10",
     "miniflare": "^2.9.0",
     "ts-json-schema-generator": "^1.1.2",
     "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "blinkdb": "^0.6.4"
   }
 }
