@@ -1,50 +1,51 @@
-import { createDB } from 'blinkdb'
+import { createDurable, withDurables } from 'itty-durable'
+import { ThrowableRouter, missing, withParams } from 'itty-router-extras'
 
-const db = createDB()
-const userTable = createTable(db, 'users')()
+const router = ThrowableRouter({ base: '/counter' })
 
+router
+  .all('*', withDurables())
+
+  // get the durable itself... returns json response, so no need to wrap
+  .get('/', ({ Counter }) => Counter.get('test').toJSON())
+
+  // By using { autoReturn: true } in createDurable(), this method returns the contents
+  .get('/increment', ({ Counter }) => Counter.get('test').increment())
+
+  // you can pass any serializable params to a method... (e.g. /counter/add/3/4 => 7)
+  .get('/add/:a?/:b?', withParams,
+    ({ Counter, a, b }) => Counter.get('test').add(Number(a), Number(b))
+  )
+
+  // reset the durable
+  .get('/reset', ({ Counter }) => Counter.get('test').reset())
+
+  // 404 for everything else
+  .all('*', () => missing('Are you sure about that?'))
+
+// with itty, and using ES6 module syntax (required for DO), this is all you need
 export default {
-  // fetch: req => new Response(JSON.stringify(req.cf.botManagement))
-  fetch: (req, env) => env.DB.get(env.DB.idFromName(new URL(req.url).hostname)).fetch(req)
+  fetch: router.handle
 }
 
-export class DB {
+
+export class DB extends createDurable({ autoReturn: true }) {
   constructor(state, env) {
-    this.state = state
-    this.env = env
+    super(state, env)
+
+    // anything defined here is only used for initialization (if not loaded from storage)
+    this.counter = 0
   }
-  async fetch(req) {
 
-    // const response = await fetch(this.env.IMPORT_URL, {headers: {range: 'bytes=0-100000000'}})
-    // const headers = Object.fromEntries(response.headers.entries())
-    // console.log({headers})
-    // // let { readable, writable } = new TransformStream()
-    // // response.body.pipeTo(writable)
+  // Because this function does not return anything, it will return the entire contents
+  // Example: { counter: 1 }
+  increment() {
+    this.counter++
+  }
 
-    // // return new Response(readable, response)
-
-    // const reader = response.body.getReader()
-
-    // let done = false
-    // let queue = ''
-
-    // while (!done) {
-    //   const result = await reader.read()
-    //   done = result.done
-    //   queue = queue + new TextDecoder().decode(result.value) 
-    //   const rows = queue.split('\n')
-    //   queue = rows.pop()
-    //   const rowCount = rows.length
-    //   console.log({rowCount, done, queue})
-    // }
-
-    const aliceId = await insert(userTable, { id: uuid(), name: "Alice", age: 23 });
-    const bobId = await insert(userTable, { id: uuid(), name: "Bob", age: 45 });
-    const charlieId = await insert(userTable, { id: uuid(), name: "Charlie", age: 34 });
-
-
-    const allUsers = await many(userTable)
-
-    return new Response(JSON.stringify({hello: 'world', allUsers}))
+  // Any explicit return will honored, despite the autoReturn flag.
+  // Note that any serializable params can passed through from the Worker without issue.
+  add(a, b) {
+    return a + b
   }
 }

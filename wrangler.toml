@@ -1,0 +1,9 @@
+node_compat = true
+compatibility_date = "2022-10-09"
+
+[durable_objects]
+bindings = [{name = "DB", class_name = "DB"}]
+
+[[migrations]]
+tag = "v1"
+new_classes = ["DB"]
