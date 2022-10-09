@@ -66,4 +66,3 @@ export const db = (schema: Schema<T>) => {
 //   { name: 'LG', age: 14 }
 // ]
 
-// pluck(dogs, 'name')
