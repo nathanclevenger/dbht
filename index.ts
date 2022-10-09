@@ -21,7 +21,7 @@ export type Query<T> = {
 export type Models = 'Blog' | 'Author' | 'Tag'
 
 
-export const db = (schema: Schema) => {
+export const db = (schema: Schema<T>) => {
   list: query => ({query})
 }
 
