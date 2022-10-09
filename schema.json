@@ -62,6 +62,14 @@
       "additionalProperties": false,
       "type": "object"
     },
+    "Variations": {
+      "enum": [
+        "",
+        "[]",
+        "?"
+      ],
+      "type": "string"
+    },
     "Visibility": {
       "enum": [
         "public",
