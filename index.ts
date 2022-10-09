@@ -11,6 +11,9 @@ export type Visibility = 'public' | 'unlisted' | 'private'
 export type Primitive = 'bool' | 'string' | 'number' | 'date' | 'time' | 'datetime' 
 export type Calculated = 'slugify' | 'uuid' | 'now' | 'camelCase' | 'titleCase' | 'humanCase'
 export type Defaults = 'createdBy' | 'createdAt' | 'updatedBy' | 'updatedAt'
+export type Variations = '' | '[]' | '?'
+
+// export type Options = `${Primitive}${Variations}`
 
 export type Query<T> = {
   [key: string]: string
