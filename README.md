@@ -1,4 +1,4 @@
-# dbht
+# db.ht
 
 ```javscript
 import { db } from 'db.ht'
