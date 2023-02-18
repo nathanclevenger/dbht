@@ -1,4 +1,4 @@
-# db.ht
+# db.ht - The Hyper Text Database
 
 ```javscript
 import { db } from 'db.ht'
