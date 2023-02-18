@@ -1,7 +1,7 @@
 # dbht
 
-```typescript
-import db from 'dbht'
+```javscript
+import { db } from 'db.ht'
 
 const book = await db.books.get(123)
 ```
